@@ -31,6 +31,10 @@ class App extends Component {
   state = {
     show: false
   };
+
+  componentDidMount() {
+    setTimeout(this.showModal, 10000);
+  }
   showModal = () => {
     this.setState({
       ...this.state,
@@ -40,7 +44,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <input type="button" onClick={this.showModal} value="Show Modal" />
         <Modal onClose={this.showModal} show={this.state.show}>
           Are you still there?
         </Modal>
