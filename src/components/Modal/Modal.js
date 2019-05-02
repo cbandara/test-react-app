@@ -1,8 +1,12 @@
 import React from "react";
 
 export default class Modal extends React.Component {
-  onClose = () => {
-    // setTimeout(this.props.onClose, 10000);
+  onClose = e => {
+    this.props.onClose && this.props.onClose(e);
+  };
+  showSecondView = () => {};
+  noResponse = () => {
+    setTimeout(showSecondView, 5000);
   };
 
   render() {

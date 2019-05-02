@@ -44,6 +44,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div>
+          <h1>Initial View</h1>
+        </div>
         <Modal onClose={this.showModal} show={this.state.show}>
           Are you still there?
         </Modal>
