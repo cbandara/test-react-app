@@ -13,14 +13,18 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.modalTimers(this.ShowModal, this.showSecondView);
+    setTimeout(this.showModal, 5000);
+    setTimeout(this.showSecondView, 10000);
   }
-  modalTimers = (func1, func2) => {
-    const time1 = setTimeout(func1, 5000);
-    const time2 = setTimeout(func2, 10000);
-    return time1, time2;
-  };
+  idleTimeout() {
+    clearTimeout(this.showSecondView);
+  }
+
   showSecondView = () => {
+    this.setState({
+      ...this.state,
+      show: this.state.show
+    });
     ReactDOM.render(<SecondView />, document.body);
   };
   showModal = () => {
@@ -30,39 +34,43 @@ class App extends Component {
     });
   };
   render() {
-  //   return (
-  //     <div className="App">
-  //       <InitialView />
-  //       <Modal onClose={this.showModal} show={this.state.show}>
-  //         <p class="alert-text">Hey, are you still there?</p>
-  //       </Modal>
-  //       <Footer />
-  //     </div>
-  //   );
+    return (
+      <div className="App">
+        <InitialView />
+
+        <Modal onClose={this.showModal} show={this.state.show}>
+          <p className="alert-text">Hey, are you still there?</p>
+        </Modal>
+        <Footer />
+      </div>
+    );
+  }
+  // render() {
+  //   {
+  //     () => {
+  //       if (this.state.show) {
+  //         return (
+  //           <div className="App">
+  //           <InitialView />
+  //           <Modal onClose={this.showModal} show={this.state.show}>
+  //             <p class="alert-text">Hey, are you still there?</p>
+  //           </Modal>
+  //           </div>
+
+  //         )
+  //       } else {
+  //         return (
+  //           <div className="App">
+  //         <SecondView></SecondView>
+  //         </div>
+  //         )
+  //       }
+  //     }()
+  //   }
   // }
-    () => {
-      if (this.state.show) {
-        return (
-          <div className="App">
-          <InitialView />
-          <Modal onClose={this.showModal} show={this.state.show}>
-            <p class="alert-text">Hey, are you still there?</p>
-          </Modal>
-          </div>
-          
-        )
-      } else {
-        return(
-        <div className="App">
-        <SecondView></SecondView>
-        </div>
-        )
-      }
-    }
-  
 }
 
 export default App;
 // const container = document.createElement("div");
 // document.body.appendChild(container);
-// ReactDOM.render(<Dashboard />, container);
+// ReactDOM.render(<App />, container);

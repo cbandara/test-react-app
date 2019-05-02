@@ -1,17 +1,17 @@
 import React from "react";
-import SecondView from "./components/SecondView/SecondView";
+// import SecondView from "../components/SecondView/SecondView";
 import "./modal.css";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 export default class Modal extends React.Component {
   onClose = e => {
-    clearTimeout();
+    clearTimeout(this.props.showSecondView);
     this.props.onClose && this.props.onClose(e);
   };
-  showSecondView = () => {
-    clearTimeout();
-    ReactDOM.render(<SecondView />, document.body);
-  };
+  // showSecondView = () => {
+  //   clearTimeout();
+  //   ReactDOM.render(<SecondView />, document.body);
+  // };
 
   render() {
     if (!this.props.show) {
