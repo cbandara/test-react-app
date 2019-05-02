@@ -3,29 +3,9 @@ import React, { Component } from "react";
 import "./App.css";
 
 import Modal from "./components/Modal/Modal";
-
-// class App extends Component {
-//   state = { show: false };
-
-//   showModal = () => {
-//     this.setState({ show: true });
-//   };
-
-//   hideModal = () => {
-//     this.setState({ show: false });
-//   };
-
-//   render() {
-//     return (
-//       <main>
-//         <button type="button" onClick={this.showModal}>
-//           Open
-//         </button>
-//         <Modal handleClose={this.hideModal}>This message is from modal</Modal>
-//       </main>
-//     );
-//   }
-// }
+import InitialView from "./components/InitialView/InitialView";
+import SecondView from "./components/SecondView/SecondView";
+import Footer from "./components/Footer/Footer";
 
 class App extends Component {
   state = {
@@ -33,8 +13,16 @@ class App extends Component {
   };
 
   componentDidMount() {
-    setTimeout(this.showModal, 10000);
+    setTimeout(this.showModal, 5000);
+    setTimeout(this.showSecondView, 10000);
   }
+  showSecondView = () => {
+    // this.setState({
+    //   ...this.state,
+    //   show: !this.state.show
+    // });
+    return <SecondView />;
+  };
   showModal = () => {
     this.setState({
       ...this.state,
@@ -44,12 +32,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
-          <h1>Initial View</h1>
-        </div>
+        <InitialView />
         <Modal onClose={this.showModal} show={this.state.show}>
-          Are you still there?
+          <p class="alert-text">Hey, are you still there?</p>
         </Modal>
+        <Footer />
       </div>
     );
   }

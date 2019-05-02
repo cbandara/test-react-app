@@ -1,0 +1,36 @@
+.modal-wrapper {
+  margin: auto;
+  margin-top: 100px;
+  background-color: rgb(0, 9, 50);
+  border-style: solid;
+  border-color: #efefef;
+  border-width: 1px;
+  border-radius: 10px;
+  display: block;
+  width: 300px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+button {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  border: 3px solid white;
+  border-radius: 40px;
+  width: 200px;
+  height: 40px;
+  margin: 10 px;
+  padding-bottom: 5px;
+}
+
+button:hover {
+  background-color: white;
+  color: #3c1053;
+  font-size: 16px;
+  border: 3px solid transparent;
+  border-radius: 40px;
+  width: 200px;
+  height: 40px;
+  margin: 10 px;
+}

@@ -1,12 +1,10 @@
 import React from "react";
 
+import "./modal.css";
+
 export default class Modal extends React.Component {
   onClose = e => {
     this.props.onClose && this.props.onClose(e);
-  };
-  showSecondView = () => {};
-  noResponse = () => {
-    setTimeout(showSecondView, 5000);
   };
 
   render() {
@@ -14,7 +12,7 @@ export default class Modal extends React.Component {
       return null;
     }
     return (
-      <div>
+      <div class="modal-wrapper">
         {this.props.children}
         <div>
           <button
@@ -22,7 +20,7 @@ export default class Modal extends React.Component {
               this.onClose(e);
             }}
           >
-            Yes
+            Yes I'm still here
           </button>
         </div>
       </div>
