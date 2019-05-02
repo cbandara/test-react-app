@@ -4,7 +4,7 @@ import "./footer.css";
 export default class Footer extends React.Component {
   render() {
     return (
-      <div class="footer-wrapper">
+      <div className="footer-wrapper">
         <footer>
           <p>Charutha Bandara</p>
         </footer>

@@ -1,6 +1,7 @@
 import React from "react";
+import "./secondview.css";
 
-export default class ScondView extends React.Component {
+export default class SecondView extends React.Component {
   render() {
     return (
       <div class="wrapper">

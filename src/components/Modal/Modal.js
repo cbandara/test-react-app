@@ -1,10 +1,16 @@
 import React from "react";
-
+import SecondView from "./components/SecondView/SecondView";
 import "./modal.css";
+import ReactDOM from "react-dom";
 
 export default class Modal extends React.Component {
   onClose = e => {
+    clearTimeout();
     this.props.onClose && this.props.onClose(e);
+  };
+  showSecondView = () => {
+    clearTimeout();
+    ReactDOM.render(<SecondView />, document.body);
   };
 
   render() {
@@ -12,7 +18,7 @@ export default class Modal extends React.Component {
       return null;
     }
     return (
-      <div class="modal-wrapper">
+      <div className="modal-wrapper">
         {this.props.children}
         <div>
           <button

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import ReactDOM from "react-dom";
+import ReactDOM from "react-dom";
 import "./App.css";
 
 import Modal from "./components/Modal/Modal";
@@ -13,15 +13,15 @@ class App extends Component {
   };
 
   componentDidMount() {
-    setTimeout(this.showModal, 5000);
-    setTimeout(this.showSecondView, 10000);
+    this.modalTimers(this.ShowModal, this.showSecondView);
   }
+  modalTimers = (func1, func2) => {
+    const time1 = setTimeout(func1, 5000);
+    const time2 = setTimeout(func2, 10000);
+    return time1, time2;
+  };
   showSecondView = () => {
-    // this.setState({
-    //   ...this.state,
-    //   show: !this.state.show
-    // });
-    return <SecondView />;
+    ReactDOM.render(<SecondView />, document.body);
   };
   showModal = () => {
     this.setState({
@@ -30,16 +30,36 @@ class App extends Component {
     });
   };
   render() {
-    return (
-      <div className="App">
-        <InitialView />
-        <Modal onClose={this.showModal} show={this.state.show}>
-          <p class="alert-text">Hey, are you still there?</p>
-        </Modal>
-        <Footer />
-      </div>
-    );
-  }
+  //   return (
+  //     <div className="App">
+  //       <InitialView />
+  //       <Modal onClose={this.showModal} show={this.state.show}>
+  //         <p class="alert-text">Hey, are you still there?</p>
+  //       </Modal>
+  //       <Footer />
+  //     </div>
+  //   );
+  // }
+    () => {
+      if (this.state.show) {
+        return (
+          <div className="App">
+          <InitialView />
+          <Modal onClose={this.showModal} show={this.state.show}>
+            <p class="alert-text">Hey, are you still there?</p>
+          </Modal>
+          </div>
+          
+        )
+      } else {
+        return(
+        <div className="App">
+        <SecondView></SecondView>
+        </div>
+        )
+      }
+    }
+  
 }
 
 export default App;
