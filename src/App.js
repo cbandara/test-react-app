@@ -9,7 +9,9 @@ import Footer from "./components/Footer/Footer";
 
 class App extends Component {
   state = {
-    show: false
+    show: false,
+    viewOneShow: true,
+    viewTwoShow: false
   };
 
   componentDidMount() {
@@ -23,9 +25,11 @@ class App extends Component {
   showSecondView = () => {
     this.setState({
       ...this.state,
-      show: this.state.show
+      viewOneShow: !this.state.viewOneShow,
+      viewTwoShow: !this.state.viewTwoShow,
+      show: false
     });
-    ReactDOM.render(<SecondView />, document.body);
+    // ReactDOM.render(<SecondView />, document.body);
   };
   showModal = () => {
     this.setState({
@@ -36,8 +40,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <InitialView />
-
+        <InitialView viewOneShow={this.state.viewOneShow} />
+        <SecondView viewTwoShow={this.state.viewTwoShow} />
         <Modal onClose={this.showModal} show={this.state.show}>
           <p className="alert-text">Hey, are you still there?</p>
         </Modal>
