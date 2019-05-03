@@ -12,13 +12,26 @@ class App extends Component {
     viewOneShow: true,
     viewTwoShow: false
   };
+  returnViewOne = () => {
+    this.setState({
+      ...this.state,
+      viewOneShow: true,
+      viewTwoShow: false,
+      show: false
+    });
+    this.setTimers();
+  };
 
   componentDidMount() {
+    this.setTimers();
+  }
+  setTimers() {
     setTimeout(this.showModal, 10000);
     this.secondTimeout = setTimeout(this.showSecondView, 15000);
   }
   idleTimeout() {
     clearTimeout(this.secondTimeout);
+    this.setTimers();
   }
 
   showSecondView = () => {
@@ -39,7 +52,11 @@ class App extends Component {
     return (
       <div className="App">
         <InitialView viewOneShow={this.state.viewOneShow} />
-        <SecondView viewTwoShow={this.state.viewTwoShow} />
+        <SecondView
+          viewTwoShow={this.state.viewTwoShow}
+          show={this.state.show}
+          returnViewOne={this.returnViewOne}
+        />
         <Modal
           onClose={this.showModal}
           show={this.state.show}
