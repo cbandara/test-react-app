@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import "./App.css";
 
 import Modal from "./components/Modal/Modal";
@@ -15,11 +14,11 @@ class App extends Component {
   };
 
   componentDidMount() {
-    setTimeout(this.showModal, 5000);
-    setTimeout(this.showSecondView, 10000);
+    setTimeout(this.showModal, 10000);
+    this.secondTimeout = setTimeout(this.showSecondView, 15000);
   }
   idleTimeout() {
-    clearTimeout(this.showSecondView);
+    clearTimeout(this.secondTimeout);
   }
 
   showSecondView = () => {
@@ -29,7 +28,6 @@ class App extends Component {
       viewTwoShow: !this.state.viewTwoShow,
       show: false
     });
-    // ReactDOM.render(<SecondView />, document.body);
   };
   showModal = () => {
     this.setState({
@@ -42,39 +40,17 @@ class App extends Component {
       <div className="App">
         <InitialView viewOneShow={this.state.viewOneShow} />
         <SecondView viewTwoShow={this.state.viewTwoShow} />
-        <Modal onClose={this.showModal} show={this.state.show}>
+        <Modal
+          onClose={this.showModal}
+          show={this.state.show}
+          idleTimeout={() => this.idleTimeout()}
+        >
           <p className="alert-text">Hey, are you still there?</p>
         </Modal>
         <Footer />
       </div>
     );
   }
-  // render() {
-  //   {
-  //     () => {
-  //       if (this.state.show) {
-  //         return (
-  //           <div className="App">
-  //           <InitialView />
-  //           <Modal onClose={this.showModal} show={this.state.show}>
-  //             <p class="alert-text">Hey, are you still there?</p>
-  //           </Modal>
-  //           </div>
-
-  //         )
-  //       } else {
-  //         return (
-  //           <div className="App">
-  //         <SecondView></SecondView>
-  //         </div>
-  //         )
-  //       }
-  //     }()
-  //   }
-  // }
 }
 
 export default App;
-// const container = document.createElement("div");
-// document.body.appendChild(container);
-// ReactDOM.render(<App />, container);

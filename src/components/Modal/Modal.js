@@ -5,7 +5,7 @@ import "./modal.css";
 
 export default class Modal extends React.Component {
   onClose = e => {
-    clearTimeout(this.props.showSecondView);
+    this.props.idleTimeout();
     this.props.onClose && this.props.onClose(e);
   };
   // showSecondView = () => {
