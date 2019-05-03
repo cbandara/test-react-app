@@ -1,5 +1,6 @@
 import React from "react";
 import "./secondview.css";
+import mars from "./mars.png";
 
 export default class SecondView extends React.Component {
   returnViewOne = e => {
@@ -11,6 +12,7 @@ export default class SecondView extends React.Component {
     }
     return (
       <div className="wrapper">
+        <img src={mars} alt="Mars" width="150px" />
         <h1>Second View</h1>
         <div>
           <button

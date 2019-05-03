@@ -1,17 +1,12 @@
 import React from "react";
-// import SecondView from "../components/SecondView/SecondView";
 import "./modal.css";
-// import ReactDOM from "react-dom";
+import astronaut from "./astronaut.png";
 
 export default class Modal extends React.Component {
   onClose = e => {
     this.props.idleTimeout();
     this.props.onClose && this.props.onClose(e);
   };
-  // showSecondView = () => {
-  //   clearTimeout();
-  //   ReactDOM.render(<SecondView />, document.body);
-  // };
 
   render() {
     if (!this.props.show) {
@@ -19,6 +14,7 @@ export default class Modal extends React.Component {
     }
     return (
       <div className="modal-wrapper">
+        <img src={astronaut} alt="Astronaut" width="200px" />
         {this.props.children}
         <div>
           <button
